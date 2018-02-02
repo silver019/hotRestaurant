@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var path    = require("path");
+var path = require("path");
 
 
 
@@ -15,6 +15,13 @@ app.get('/home', function (req, res) {
 });
 app.get('/reserve', function (req, res) {
   res.sendFile(path.join(__dirname+'/reserve.html'));
+
+
+});
+
+app.get('/script', function (req, res) {
+  res.sendFile(path.join(__dirname+'/script.js'));
+  
 
 });
 
