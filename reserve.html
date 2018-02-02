@@ -13,8 +13,7 @@
         <div class="container">
           <h1 class="display-4">Hot Restaurant</h1>
           <p class="lead">We only have 5 tables! Book your seat before they all are gone!</p>
-          <button type="button" class="btn btn-primary" id="button">View Tables</button>
-          <button type="button" class="btn btn-danger" id="button">Make Reservation</button>
+          <button type="button" class="btn btn-primary" id="button" src="table.html">View Tables</button>
         </div>
       </div>
     </center>
@@ -31,6 +30,10 @@
               <input type="text" class="form-control" id="reserve_name" placeholder="John Doe">
             </div>
             <div class="form-group">
+              <label for="formGroupExampleInput" id="text">Size of Party</label>
+              <input type="text" class="form-control" id="reserve_qty" placeholder="John Doe">
+            </div>
+            <div class="form-group">
               <label for="formGroupExampleInput2" id="text">Phone Number</label>
               <input type="text" class="form-control" id="reserve_phone" placeholder="123.456.7890">
             </div>
@@ -39,27 +42,59 @@
               <input type="text" class="form-control" id="reserve_email" placeholder="John.Doe@email.com">
             </div>
             <div class="form-group">
-              <label for="formGroupExampleInput2" id="text">Unique ID</label>
-              <input type="text" class="form-control" id="reserve_id" placeholder="">
+              <label for="formGroupExampleInput2" id="text">Time</label>
+              <input type="text" class="form-control" id="reserve_id" placeholder="12:00pm">
             </div>
             <button type="submit" class="btn btn-primary submit">Submit</button>
             </form>
-            ::after
           </div>
         </div>
       </div>
     </div>
 
-    <div class="contatiner">
-        <center>
+<span>
           <a href="url" id="text">API Table Link</a>
+          <p id="text">|</p>
           <a href="url" id="text">API Waitlist</a>
-        </center>
-    </div>
+</span>
 
 
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      $(".submit").on("click", function(){
+        var newReservation = {
+          customerName:
+            $('#reserve_name').val().trim(),
+          sizeOfParty:
+              $('#reserve_qty').val().trim(),
+          phoneNumber:
+            $('#reserve_phone').val().trim()
+          customerEmail:
+            $('#reserve_email').val().trim()
+          customerID:
+            $('#reserve_id').val().trim()
+        };
+        console.log(newReservation);
+        val currentURL = window.location.origin;
+
+        $.post(currentURL + "/api/tables", newReservation, function(data){
+            if(data === true){
+              alert("You are officially Booked!")
+            }
+            if(data === false){
+              alert("Sorry you are on the wait list")
+            }
+
+            $('#reserve_name').val("");
+            $('#reserve_qty').val("");
+            $('#reserve_phone').val("");
+            $('#reserve_email').val("");
+            $('#reserve_id').val("");
+        });
+        return false;
+      })
+    </script>
   </body>
 </html>
