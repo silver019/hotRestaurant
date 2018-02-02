@@ -1,0 +1,21 @@
+body {
+    background-image: url("https://www.kramerbev.com/wp-content/uploads/2013/06/Amazing-Background-Images-For-Websites-.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+.jumbotron {
+    background: transparent;
+    color: white;
+}
+
+#button {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+    background-color: #555555;
+    border: 2px solid #e7e7e7;
+    color: #e7e7e7;
+}
+
+#text {
+  color: #e7e7e7;
+}
